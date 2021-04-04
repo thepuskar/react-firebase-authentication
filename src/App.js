@@ -1,8 +1,11 @@
 import SigninSignup from "./components/SigninSignup";
+import { AuthProvider } from "./contexts/AuthContext";
 function App() {
   return (
     <>
-      <SigninSignup />
+      <AuthProvider>
+        <SigninSignup />
+      </AuthProvider>
     </>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AiOutlineUser as User } from "react-icons/ai";
 import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -21,14 +20,13 @@ const Index = () => {
           </div>
           <div className="login__forms">
             <SignIn
-              User={User}
               Lock={Lock}
+              At={At}
               isActive={isActive}
               setIsActive={setIsActive}
               handleToggle={handleToggle}
             />
             <SignUp
-              User={User}
               Lock={Lock}
               At={At}
               isActive={isActive}

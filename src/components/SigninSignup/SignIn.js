@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import Input from "../Input";
 import Button from "../Button";
+import Error from "../Error";
 
-const SignIn = ({ User, Lock, isActive, setIsActive, handleToggle }) => {
+const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
   return (
     <>
       <form
@@ -12,13 +15,14 @@ const SignIn = ({ User, Lock, isActive, setIsActive, handleToggle }) => {
         id="login-in"
       >
         <h1 className="login__title">Sign In</h1>
+
         <div className="login__box">
-          <User className="login__icon" />
-          <Input type="text" placeholder="Username" />
+          <At className="login__icon" />
+          <Input type="text" placeholder="Email" ref={emailRef} />
         </div>
         <div className="login__box">
           <Lock className="login__icon" />
-          <Input type="password" placeholder="Password" />
+          <Input type="password" placeholder="Password" ref={passwordRef} />
         </div>
         <span className="login__forgot">Forgot Password? </span>
         <Button>Sign In</Button>

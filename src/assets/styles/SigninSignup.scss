@@ -6,7 +6,8 @@
   margin-right: 1.5rem;
 
   &__content {
-    display: grid;
+    display: flex;
+    justify-content: center;
   }
   &__img {
     justify-self: center;
@@ -134,7 +135,7 @@
       bottom: -2rem;
     }
     &__create {
-      bottom: -5.5rem;
+      bottom: -7.7rem;
     }
   }
 }
