@@ -1,0 +1,9 @@
+$font: "Poppins", sans-serif;
+$big-font-size: 1.5rem;
+$normal-font-size: 0.938rem;
+$small-font-size: 0.813rem;
+
+@media screen and (min-width: 768px) {
+  $normal-font-size: 1rem;
+  $small-font-size: 0.875rem;
+}
