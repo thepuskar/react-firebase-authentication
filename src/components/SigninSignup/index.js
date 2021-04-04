@@ -1,11 +1,14 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
 import { AiOutlineUser as User } from "react-icons/ai";
 import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const index = () => {
+const Index = () => {
+  const [isActive, setIsActive] = useState(false);
+  const handleToggle = () => {
+    setIsActive(!isActive);
+  };
   return (
     <>
       <div className="login">
@@ -17,8 +20,21 @@ const index = () => {
             />
           </div>
           <div className="login__forms">
-            <SignIn User={User} Lock={Lock} />
-            <SignUp User={User} Lock={Lock} At={At} />
+            <SignIn
+              User={User}
+              Lock={Lock}
+              isActive={isActive}
+              setIsActive={setIsActive}
+              handleToggle={handleToggle}
+            />
+            <SignUp
+              User={User}
+              Lock={Lock}
+              At={At}
+              isActive={isActive}
+              setIsActive={setIsActive}
+              handleToggle={handleToggle}
+            />
           </div>
         </div>
       </div>
@@ -26,4 +42,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

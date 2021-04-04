@@ -50,20 +50,7 @@
     font-size: 1.5rem;
     color: $color;
   }
-  &__input {
-    border: none;
-    outline: none;
-    font-size: $normal-font-size;
-    font-weight: 700;
-    color: $color-dark;
-    width: 100%;
 
-    &::placeholder {
-      font-size: $normal-font-size;
-      font-family: $font;
-      color: $color-light;
-    }
-  }
   &__forgot {
     display: block;
     width: max-content;
@@ -73,21 +60,7 @@
     font-weight: 600;
     color: $color-light;
   }
-  &__button {
-    display: block;
-    padding: 1rem;
-    margin: 2rem 0;
-    background-color: $color;
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 0.5rem;
-    transition: 0.3s;
 
-    &:hover {
-      background-color: $color-hover;
-    }
-  }
   &__account,
   &__signin,
   &__signup {
@@ -101,15 +74,6 @@
     &--signup {
       color: $color;
       cursor: pointer;
-    }
-  }
-  &__social {
-    margin-top: 2rem;
-
-    &--icon {
-      font-size: 1.5rem;
-      color: $color-dark;
-      margin: 0 1rem;
     }
   }
 }
