@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 import Error from "../Error";
 import Button from "../Button";
 import { useAuth } from "../../contexts/AuthContext";
 
 const Dashboard = () => {
   const [error, setError] = useState("");
-  const { currentUser } = useAuth();
-  function handleLogOut() {
-    console.log("log out");
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+  async function handleLogOut() {
+    setError("");
+    try {
+      await logout();
+      history.push("/sign");
+    } catch {
+      setError("Unable to logout");
+    }
   }
   return (
     <div className="main">
@@ -20,14 +27,10 @@ const Dashboard = () => {
         {error && <Error error={error} />}
       </div>
       <div className="main__button">
-        <Button onClick={handleLogOut} subclass="green">
-          Update Profile
-        </Button>
+        <Button subclass="green">Update Profile</Button>
       </div>
-      <div className="main__button">
-        <Button onClick={handleLogOut} subclass="danger">
-          Log Out
-        </Button>
+      <div className="main__button" onClick={handleLogOut}>
+        <Button subclass="danger">Log Out</Button>
       </div>
     </div>
   );
