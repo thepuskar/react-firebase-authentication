@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import { useHistory } from "react-router-dom";
 import Input from "../Input";
 import Button from "../Button";
 import Icons from "../Icons";
@@ -13,6 +13,7 @@ const SignUp = ({ User, Lock, At, isActive, setIsActive, handleToggle }) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,6 +24,7 @@ const SignUp = ({ User, Lock, At, isActive, setIsActive, handleToggle }) => {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
     } catch {
       setError("Faild to create account");
     }

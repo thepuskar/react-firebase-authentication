@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Input from "../Input";
 import Button from "../Button";
@@ -11,6 +11,7 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +20,7 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
     } catch {
       setError("Faild to Sign In account");
     }
