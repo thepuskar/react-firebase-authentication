@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
+import { useAuth } from "../../contexts/AuthContext";
 import Input from "../Input";
 import Button from "../Button";
 import Error from "../Error";
@@ -7,15 +8,31 @@ import Error from "../Error";
 const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Faild to Sign In account");
+    }
+    setLoading(false);
+  }
   return (
     <>
       <form
         action=""
         className={isActive ? "login__register none" : "login__register "}
-        id="login-in"
+        onSubmit={handleSubmit}
       >
         <h1 className="login__title">Sign In</h1>
-
+        {error && <Error error={error} />}
         <div className="login__box">
           <At className="login__icon" />
           <Input type="text" placeholder="Email" ref={emailRef} />
@@ -25,7 +42,7 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
           <Input type="password" placeholder="Password" ref={passwordRef} />
         </div>
         <span className="login__forgot">Forgot Password? </span>
-        <Button>Sign In</Button>
+        <Button disabled={loading}>Sign In</Button>
 
         <div>
           <span className="login__account login__account--account">
