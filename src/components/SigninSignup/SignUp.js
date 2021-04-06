@@ -59,7 +59,9 @@ const SignUp = ({ User, Lock, At, isActive, setIsActive, handleToggle }) => {
           />
         </div>
 
-        <Button disabled={loading}>Sign Up</Button>
+        <Button disabled={loading} subclass="green">
+          Sign Up
+        </Button>
 
         <div>
           <span className="login__account login__account--account">

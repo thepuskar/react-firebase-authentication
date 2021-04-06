@@ -10,6 +10,11 @@
       font-size: $big-font-size;
     }
   }
+  &__email {
+    color: $color;
+    font-size: $normal-font-size;
+    margin-top: 0;
+  }
   &__button {
     margin-top: 2rem;
   }

@@ -44,7 +44,9 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
           <Input type="password" placeholder="Password" ref={passwordRef} />
         </div>
         <span className="login__forgot">Forgot Password? </span>
-        <Button disabled={loading}>Sign In</Button>
+        <Button disabled={loading} subclass="green">
+          Sign In
+        </Button>
 
         <div>
           <span className="login__account login__account--account">
