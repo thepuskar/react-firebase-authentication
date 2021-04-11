@@ -1,5 +1,7 @@
 {
   "name": "react-auth",
+  "author": "Puskar Adhikari",
+  "url":"https://github.com/thepuskar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
