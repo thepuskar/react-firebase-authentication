@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
+import React from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import PopupController from "../PopupController";
+import useToggle from "../../useToggle";
+import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
 
 const Index = () => {
-  const [isActive, setIsActive] = useState(false);
+  const { isActive, setIsActive } = useToggle();
   const handleToggle = () => {
     setIsActive(!isActive);
   };
   return (
     <>
+      <PopupController isActive={isActive} setIsActive={setIsActive} />
       <div className="login">
         <div className="login__content">
           <div className="login__img">

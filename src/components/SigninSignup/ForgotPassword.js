@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Input from "../Input";
 import Button from "../Button";
 import Error from "../Error";
+import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
 
-const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
+const ForgotPassword = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState();
@@ -27,13 +28,9 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
     setLoading(false);
   }
   return (
-    <>
-      <form
-        action=""
-        className={isActive ? "login__register none" : "login__register "}
-        onSubmit={handleSubmit}
-      >
-        <h1 className="login__title">Sign In</h1>
+    <div className="reset">
+      <form action="" className="login__reset" onSubmit={handleSubmit}>
+        <h1 className="login__title">Forget Password</h1>
         {error && <Error error={error} />}
         <div className="login__box">
           <At className="login__icon" />
@@ -43,27 +40,17 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
           <Lock className="login__icon" />
           <Input type="password" placeholder="Password" ref={passwordRef} />
         </div>
-        <Link to="/forgotpassword">
-          <span className="login__forgot">Forgot Password?</span>
-        </Link>
         <Button disabled={loading} subclass="green">
-          Sign In
+          Reset Password
         </Button>
-
         <div>
-          <span className="login__account login__account--account">
-            Don't Have an Account?
-          </span>
-          <span
-            className="login__signin login__signin--signup"
-            onClick={handleToggle}
-          >
-            Sign Up
-          </span>
+          <Link to="sign">
+            <span className="login__signin login__signin--signup">Sign In</span>
+          </Link>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
-export default SignIn;
+export default ForgotPassword;
