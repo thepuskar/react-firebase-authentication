@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Message from "../Message";
 import Button from "../Button";
 import { useAuth } from "../../contexts/AuthContext";
@@ -27,7 +27,9 @@ const Dashboard = () => {
         {error && <Message error={error} subclass="error" />}
       </div>
       <div className="main__button">
-        <Button subclass="green">Update Profile</Button>
+        <Link to="update-profile">
+          <Button subclass="green">Update Profile</Button>
+        </Link>
       </div>
       <div className="main__button" onClick={handleLogOut}>
         <Button subclass="danger">Log Out</Button>

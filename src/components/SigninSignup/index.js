@@ -1,7 +1,6 @@
 import React from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import PopupController from "../PopupController";
 import useToggle from "../../useToggle";
 import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
 
@@ -12,7 +11,6 @@ const Index = () => {
   };
   return (
     <>
-      <PopupController isActive={isActive} setIsActive={setIsActive} />
       <div className="login">
         <div className="login__content">
           <div className="login__img">
