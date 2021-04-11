@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Error from "../Error";
+import Message from "../Message";
 import Button from "../Button";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -24,7 +24,7 @@ const Dashboard = () => {
           Welcome <span className="main__email">{currentUser.email}</span>
         </h1>
 
-        {error && <Error error={error} />}
+        {error && <Message error={error} subclass="error" />}
       </div>
       <div className="main__button">
         <Button subclass="green">Update Profile</Button>

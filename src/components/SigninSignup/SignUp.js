@@ -4,7 +4,7 @@ import Input from "../Input";
 import Button from "../Button";
 import Icons from "../Icons";
 import { useAuth } from "../../contexts/AuthContext";
-import Error from "../Error";
+import Message from "../Message";
 
 const SignUp = ({ User, Lock, At, isActive, setIsActive, handleToggle }) => {
   const emailRef = useRef();
@@ -40,7 +40,7 @@ const SignUp = ({ User, Lock, At, isActive, setIsActive, handleToggle }) => {
       >
         <h1 className="login__title">Create Account</h1>
 
-        {error && <Error error={error} />}
+        {error && <Message error={error} subclass="error" />}
         <div className="login__box">
           <At className="login__icon" />
           <Input type="email" placeholder="Email" ref={emailRef} />

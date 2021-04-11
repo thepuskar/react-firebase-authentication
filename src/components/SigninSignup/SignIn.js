@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Input from "../Input";
 import Button from "../Button";
-import Error from "../Error";
+import Message from "../Message";
 
 const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
   const emailRef = useRef();
@@ -34,7 +34,7 @@ const SignIn = ({ At, Lock, isActive, setIsActive, handleToggle }) => {
         onSubmit={handleSubmit}
       >
         <h1 className="login__title">Sign In</h1>
-        {error && <Error error={error} />}
+        {error && <Message error={error} subclass="error" />}
         <div className="login__box">
           <At className="login__icon" />
           <Input type="text" placeholder="Email" ref={emailRef} />

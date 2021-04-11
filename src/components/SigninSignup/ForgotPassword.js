@@ -1,44 +1,43 @@
 import React, { useRef, useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Input from "../Input";
 import Button from "../Button";
-import Error from "../Error";
-import { BiLockOpen as Lock, BiAt as At } from "react-icons/bi";
+import Message from "../Message";
+import { BiAt as At } from "react-icons/bi";
 
 const ForgotPassword = () => {
   const emailRef = useRef();
-  const passwordRef = useRef();
   const [error, setError] = useState();
+  const [successMessage, setSuccessMessage] = useState();
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
-  const history = useHistory();
+  const { resetPassword } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
+      setSuccessMessage("");
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      await resetPassword(emailRef.current.value);
+      setSuccessMessage("Check your Mail");
     } catch {
-      setError("Faild to Sign In account");
+      setError("Reset Password failed");
     }
     setLoading(false);
   }
   return (
     <div className="reset">
       <form action="" className="login__reset" onSubmit={handleSubmit}>
-        <h1 className="login__title">Forget Password</h1>
-        {error && <Error error={error} />}
+        <h1 className="login__title">Reset Password</h1>
+        {error && <Message error={error} subclass="error" />}
+        {successMessage && (
+          <Message successMessage={successMessage} subclass="success" />
+        )}
         <div className="login__box">
           <At className="login__icon" />
           <Input type="text" placeholder="Email" ref={emailRef} />
-        </div>
-        <div className="login__box">
-          <Lock className="login__icon" />
-          <Input type="password" placeholder="Password" ref={passwordRef} />
         </div>
         <Button disabled={loading} subclass="green">
           Reset Password
